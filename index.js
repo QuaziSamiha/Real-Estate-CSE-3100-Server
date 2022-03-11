@@ -51,6 +51,13 @@ client.connect(err => {
                 res.send(properties)
             })
     })
+
+    app.delete('/deleteProperty/:id', (req, res) => {
+        propertyCollection.deleteOne({ _id: ObjectId(req.params.id) })
+            .then(result => {
+                console.log(result);
+            })
+    })
 });
 
 app.listen(port, () => {
